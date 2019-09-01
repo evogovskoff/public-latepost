@@ -1,0 +1,10 @@
+RewriteEngine on 
+RewriteBase / 
+RewriteCond %{HTTP_HOST} ^m\.latepost\.ru$ 
+RewriteCond %{REQUEST_URI} !/m/ 
+RewriteRule ^(.*)$ /m/$1 [L]
+RewriteEngine on
+RewriteCond %{HTTP_USER_AGENT} ((.*iPhone.*)|(.*iPod.*)|(.*BlackBerry.*)|(.*Android.*Mobile.*)|(.*Windows\ CE.*)|(.*IEMobile.*)|(.*Opera\ Mini.*)|(.*Opera\ Mobi.*))
+RewriteCond %{HTTP_REFERER} !^https://latepost\.ru(/)?
+RewriteCond %{QUERY_STRING} !no_redirect=true [NC]
+RewriteRule ^(.*)$ https://m.latepost.ru/$1 [L,R=302]
